@@ -1,11 +1,11 @@
 <template>
 	 <div class="cartControl">
     <transition name="fade">
-        <div class="cart-decrease" v-show="food.count>0" @click.stop.prevent="decreaseCart($event)">
+        <span class="cart-decrease" v-show="food.count>0" @click.stop.prevent="decreaseCart($event)">
           <transition name="inner">
           <span class="inner iconfont icon-jian"></span>
           </transition>
-        </div>
+        </span>
     </transition>
      <span class="cart-count" v-show="food.count > 0 ">
       {{food.count}}
@@ -24,10 +24,10 @@
     },
     methods: {
       addCart(event) {
-        if (!event._constructed) {
-          // 去掉自带click事件的点击
-          return;
-        }
+//      if (!event._constructed) {
+//        // 去掉自带click事件的点击
+//        return;
+//      }
         if (!this.food.count) {
           Vue.set(this.food, 'count', 1);
         } else {
@@ -37,10 +37,10 @@
         this.$emit('increment', event.target); // 子组件通过 $emit触发父组件的方法 increment   还
       },
       decreaseCart(event) {
-        if (!event._constructed) {
-          // 去掉自带click事件的点击
-          return;
-        }
+//      if (!event._constructed) {
+//        // 去掉自带click事件的点击
+//        return;
+//      }
         this.food.count--;
       }
     }
